@@ -172,16 +172,14 @@ async function selectDevice(deviceId) {
     show(document.getElementById("usage-detail"));
 
     document.getElementById("usage-info").innerHTML = `
-        <p><strong>Device ID:</strong> ${data.deviceId}</p>
-        <p><strong>Device Name:</strong> ${data.deviceName ?? "-"}</p>
-        <p><strong>Power Status:</strong>
-            <span class="${badgeClass(data.powerStatus)}">${data.powerStatus ?? "-"}</span></p>
-        <p><strong>Last Used:</strong> ${data.lastUsedAt ?? "-"}</p>
-        <p><strong>Total Usage Hours:</strong> ${data.totalUsageHours ?? "-"}</p>
-        <p><strong>Weekly Usage Count:</strong> ${data.weeklyUsageCount ?? "-"}</p>
-        <p><strong>Health Status:</strong>
-            <span class="${badgeClass(data.healthStatus)}">${data.healthStatus ?? "-"}</span></p>
-        <p><strong>Remark:</strong> ${data.remark ?? "-"}</p>
+        <div class="label">Device ID</div><div class="value">${data.deviceId}</div>
+        <div class="label">Device Name</div><div class="value">${data.deviceName ?? "-"}</div>
+        <div class="label">Power Status</div><div class="value"><span class="${badgeClass(data.powerStatus)}">${data.powerStatus ?? "-"}</span></div>
+        <div class="label">Last Used</div><div class="value">${data.lastUsedAt ?? "-"}</div>
+        <div class="label">Total Usage Hours</div><div class="value">${data.totalUsageHours ?? "-"}</div>
+        <div class="label">Weekly Usage Count</div><div class="value">${data.weeklyUsageCount ?? "-"}</div>
+        <div class="label">Health Status</div><div class="value"><span class="${badgeClass(data.healthStatus)}">${data.healthStatus ?? "-"}</span></div>
+        <div class="label">Remark</div><div class="value">${data.remark ?? "-"}</div>
     `;
 
     renderUsageChart(data.weeklyUsageTrend || []);
@@ -197,16 +195,16 @@ function renderUsageChart(trend) {
         data: {
             labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
             datasets: [{
-                label: "Weekly Usage",
+                label: "Weekly Usage Trend",
                 data: trend,
-            }],
+                borderWidth: 1
+            }]
         },
         options: {
             responsive: true,
-            scales: {
-                y: { beginAtZero: true },
-            },
-        },
+            maintainAspectRatio: true,
+            scales: { y: { beginAtZero: true } }
+        }
     });
 }
 
