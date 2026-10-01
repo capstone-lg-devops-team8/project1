@@ -53,7 +53,7 @@
 - 요구사항 #2와 #3을 각각 다른 feature 브랜치로 나눠 작업했나요?
 - 브랜치를 나눠서 좋았던 점 / 어려웠던 점은?
 ---
-|backend는 msk branch에서 작성함, 다른 feature 구현, 요구사항들은 바로 main으로 pr 날림|
+|backend는 msk branch에서 작성함, 마지막 CI는 feature/ci 브랜치에서 yml 파일 추가, 다른 feature 구현, 요구사항들은 바로 main으로 pr 날림|
 |-----------|
 <br>
 
